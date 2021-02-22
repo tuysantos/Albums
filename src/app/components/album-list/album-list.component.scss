@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+  }
+
+.row-effect {
+    cursor: pointer;
+    &:hover {
+        background-color: #c0c0c0;
+    }
+}
+
+.format-display {
+    @media screen and (max-width: 450px) {
+        white-space: nowrap; 
+        max-width: 50px; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
+    }
+    
+}

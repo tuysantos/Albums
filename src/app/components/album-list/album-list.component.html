@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef  mat-sort-header> ID </th>
+          <td mat-cell id="tdEdit" *matCellDef="let element" (click)="editAlbum(element)"> {{element.id}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('title')" style="cursor: pointer;" [ngStyle]="{'color': columnSelected === 'title' ? 'blueviolet' : '#000'}"> Title 
+            <mat-icon aria-hidden="false" aria-label="Delete Album" style="vertical-align: bottom;">keyboard_arrow_down</mat-icon>
+        </th>
+          <td mat-cell *matCellDef="let element" (click)="editAlbum(element)">
+              <div class="format-display">{{element.title}} </div>
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('year')" style="cursor: pointer" [ngStyle]="{'color': columnSelected === 'year' ? 'blueviolet' : '#000'}"> Year 
+            <mat-icon aria-hidden="false" aria-label="Delete Album" style="vertical-align: bottom;">keyboard_arrow_down</mat-icon>
+        </th>
+          <td mat-cell *matCellDef="let element" (click)="editAlbum(element)"> {{element.year}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="artist">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortColumn('artist')" style="cursor: pointer" [ngStyle]="{'color': columnSelected === 'artist' ? 'blueviolet' : '#000'}"> Artist 
+            <mat-icon aria-hidden="false" aria-label="Delete Album" style="vertical-align: bottom;">keyboard_arrow_down</mat-icon>
+        </th>
+          <td mat-cell *matCellDef="let element" (click)="editAlbum(element)">
+            <div class="format-display">{{element.artist}} </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="artistId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td mat-cell id="tdDelete" *matCellDef="let element" (click)="deleteAlbum(element)">
+                <mat-icon aria-hidden="false" aria-label="Delete Album">delete_forever</mat-icon></td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row-effect"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">There is no records...</td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

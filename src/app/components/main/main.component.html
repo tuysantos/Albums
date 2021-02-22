@@ -1,0 +1,11 @@
+<div class="main-wrapper">
+    <div class="title-container">
+        <span>List of Albums</span>
+    </div>
+    <div class="header-button">
+        <button id="btnAddNew" type="button" mat-raised-button color="primary" (click)="openDialog({})">Add New Album</button>
+    </div>
+    <div>
+        <app-album-list (editEvent)="editAlbum($event)" (deleteEvent)="deleteAlbum($event)"></app-album-list>
+    </div>
+</div>

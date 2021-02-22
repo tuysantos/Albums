@@ -1,0 +1,35 @@
+.form-container {
+    font-size: 16px;
+    color: #000;
+    margin: 30px;
+    width: 470px;
+    width: 100%;
+
+    .form-title {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .form-row {
+        margin-right: 30px;
+        .form-field {
+            width: 100%;
+        }
+    }
+    
+    .save-button {
+        @media screen and (min-width: 450px) {
+            text-align: end;
+            margin-right: 30px;
+        }
+
+        button {
+            width: 100px;
+        }
+
+        .mr {
+            margin-right: 30px;
+        }
+    }
+}
+

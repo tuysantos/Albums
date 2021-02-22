@@ -1,0 +1,18 @@
+
+<div>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Delete</mat-card-title>
+            <mat-card-subtitle>{{albumName}} by {{artistName}} ({{albumYear}})</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Are you sure you want to delete this record?
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="card-action">
+            <button type="button" mat-raised-button color="warn" class="mr" (click)="closeForm()">Cancel</button>
+            <button id="btnDeleteRecord" type="button" mat-raised-button color="primary" class="mr" (click)="deleteData()">Ok</button>
+          </mat-card-actions>
+    </mat-card>
+</div>

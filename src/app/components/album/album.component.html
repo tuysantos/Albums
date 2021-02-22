@@ -1,0 +1,69 @@
+
+<div class="form-container">
+    <div class="form-title">
+        <span>{{formTitle}}</span>
+    </div>
+    <form [formGroup]="albumForm" (ngSubmit)="saveAlbum()">
+        <!-- row title -->
+        <div class="form-row">
+            <mat-form-field class="form-field">
+                <mat-label>Album</mat-label>
+                <input id="txtTitle" maxlength="100" matInput formControlName="title" placeholder="Album">
+            </mat-form-field>
+            <div class="error-messages">
+                <ng-container *ngFor="let error of error_messages.title">
+                    <div class="error-message"
+                    *ngIf="albumForm.get('title').hasError(error.type) && (albumForm.get('title').dirty || albumForm.get('title').touched)">
+                    {{error.message}}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- row year -->
+        <div class="form-row">
+            <mat-form-field appearance="standard">
+                <mat-label>Year</mat-label>
+                <input id="txtYear" maxlength="4" matInput formControlName="year" placeholder="Year">
+            </mat-form-field>
+            <div class="error-messages">
+                <ng-container *ngFor="let error of error_messages.year">
+                    <div class="error-message"
+                    *ngIf="albumForm.get('year').hasError(error.type) && (albumForm.get('year').dirty || albumForm.get('year').touched)">
+                    {{error.message}}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        
+         <!-- row artistId -->
+         <div class="form-row">
+            <mat-form-field appearance="standard" class="form-field">
+                <mat-label class="example-label">Artist</mat-label>
+                <mat-select id="lstArtistId" formControlName="artistId">
+                    <mat-option>Please select an option</mat-option>
+                    <mat-option *ngFor="let artist of artistList; trackBy: trackByFn" [value]="artist.id">{{artist.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="error-messages">
+                <ng-container *ngFor="let error of error_messages.artistId">
+                    <div class="error-message"
+                    *ngIf="albumForm.get('artistId').hasError(error.type) && (albumForm.get('artistId').dirty || albumForm.get('artistId').touched)">
+                    {{error.message}}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        
+        <div class="save-button">
+            <button id="btnCancel" type="button" mat-raised-button color="warn" class="mr" (click)="closeForm()">Cancel</button>
+            <button id="btnUpdate"
+                [disabled]="albumForm.get('title').hasError('required') || 
+                albumForm.get('year').hasError('required') || 
+                albumForm.get('year').hasError('pattern') || 
+                albumForm.get('artistId').hasError('required')" 
+                type="submit" mat-raised-button color="primary">Save
+            </button>
+        </div>
+    </form>
+</div>
